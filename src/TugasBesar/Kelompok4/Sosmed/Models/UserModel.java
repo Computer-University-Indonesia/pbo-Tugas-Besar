@@ -5,13 +5,48 @@
  */
 package TugasBesar.Kelompok4.Sosmed.Models;
 
-import TugasBesar.Kelompok4.Sosmed.Configs.Database.Database;
+import java.util.Stack;
+
+
+
 
 /**
  *
  * @author sahanya
  */
-public class UserModel {
-    Database db; 
-    
+public class UserModel  extends Model{
+    public UserModel(){
+     super.getDatabase().setTable("users");   
+    }
+    public Stack getWhere(String where){
+        return super.getDatabase().GetDetail(where);
+    }
+    public Stack getUserWithRoleWhere(String where){
+        return super.getDatabase()
+                .getAllUseQuery("SELECT users.name AS name,roles.name AS user_role,username,password "
+                        + "FROM users JOIN roles ON users.role_id = roles.id WHERE "+where);
+        
+    }
+    @Override
+    public void create(String[] values) {
+        super.getDatabase().create("name,username,password", values);
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(String set, String where) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void getAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void delete(String where) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
 }
