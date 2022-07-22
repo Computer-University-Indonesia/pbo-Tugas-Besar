@@ -39,7 +39,7 @@ public class UserModel  extends Model{
     }
 
     @Override
-    public void getAll() {
+    public Stack getAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

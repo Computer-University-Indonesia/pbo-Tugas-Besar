@@ -1,6 +1,7 @@
 package TugasBesar.Kelompok4.Sosmed.Models;
 
 import TugasBesar.Kelompok4.Sosmed.Configs.Database;
+import java.util.Stack;
 
 
 
@@ -25,7 +26,7 @@ public abstract class Model {
 
     abstract public void update(String set,String where);
 
-    abstract public void getAll();
+    abstract public Stack getAll();
 
     abstract public void delete(String where);
 
