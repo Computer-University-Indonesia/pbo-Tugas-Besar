@@ -24,10 +24,7 @@ public class LoginView extends javax.swing.JFrame {
 
     public LoginView() {
         initComponents();
-
-//        Content.get
-//        card.setVisible(true);
-//        controller = new AuthController();
+        controller=new AuthController();
     }
 
     /**
@@ -114,14 +111,10 @@ public class LoginView extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
 
-//        controller.login(Username.getText(), Password.getText());
+        controller.login(Username.getText(), Password.getText());
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        String str = Username.getText();
-        jPanel1.add(new JButton());
-        jPanel1.validate();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
