@@ -29,10 +29,10 @@ public class AuthController {
             Stack<String> user = result.get(0);
             if ("admin".equals(user.get(1))) {
 //                admin
-                JOptionPane.showMessageDialog(null, "Selamat Datang Admin Tampan(lutfian Rahdiansyah)");
+                JOptionPane.showMessageDialog(null, "Monyet sia UPI");
             } else {
 //                user  
-                JOptionPane.showMessageDialog(null, "login wae maneh kuntul (paris)");
+                JOptionPane.showMessageDialog(null, "Selamat datang Fariz ganteng");
             }
         }
 
