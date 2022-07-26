@@ -22,6 +22,7 @@ public class HomeView extends javax.swing.JFrame {
     public HomeView() {
         initComponents();
         controller = new PostController();
+        loadPost();
     }
 
     /**

@@ -23,7 +23,7 @@ public class UserModel  extends Model{
     }
     public Stack getUserWithRoleWhere(String where){
         return super.getDatabase()
-                .getAllUseQuery("SELECT users.name AS name,roles.name AS user_role,username,password "
+                .getAllUseQuery("SELECT users.id as user_id,users.name AS name,roles.name AS user_role,username,password "
                         + "FROM users JOIN roles ON users.role_id = roles.id WHERE "+where);
         
     }
