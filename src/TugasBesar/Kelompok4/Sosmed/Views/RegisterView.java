@@ -6,6 +6,8 @@
 
 package TugasBesar.Kelompok4.Sosmed.Views;
 
+import TugasBesar.Kelompok4.Sosmed.Controllers.AuthController;
+
 /**
  *
  * @author FRZ
@@ -13,10 +15,12 @@ package TugasBesar.Kelompok4.Sosmed.Views;
 public class RegisterView extends javax.swing.JFrame {
 
     /** Creates new form RegisterView */
+    AuthController controller;
     public RegisterView() {
         initComponents();
         this.setResizable(false);
         registerButton.setText("Register");
+        controller = new AuthController();
     }
 
     /** This method is called from within the constructor to
@@ -33,16 +37,16 @@ public class RegisterView extends javax.swing.JFrame {
         Title = new javax.swing.JLabel();
         namaLabel = new javax.swing.JLabel();
         rePasswordLabel = new javax.swing.JLabel();
-        namaField = new javax.swing.JTextField();
+        usernameField = new javax.swing.JTextField();
         rePasswordField = new javax.swing.JPasswordField();
         registerButton = new TugasBesar.Kelompok4.Sosmed.Componenets.ButtonPanel();
         loginLabel = new javax.swing.JLabel();
         login = new javax.swing.JLabel();
         copyright = new javax.swing.JLabel();
         usernameLabel = new javax.swing.JLabel();
-        usernameField = new javax.swing.JPasswordField();
         passwordField = new javax.swing.JPasswordField();
         passwordLabel = new javax.swing.JLabel();
+        namaField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 800));
@@ -74,15 +78,15 @@ public class RegisterView extends javax.swing.JFrame {
         rePasswordLabel.setPreferredSize(new java.awt.Dimension(200, 30));
         mainPanel.add(rePasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 390, 190, -1));
 
-        namaField.setToolTipText("");
-        namaField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 115, 255), 2, true));
-        namaField.setPreferredSize(new java.awt.Dimension(400, 50));
-        namaField.addActionListener(new java.awt.event.ActionListener() {
+        usernameField.setToolTipText("");
+        usernameField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 115, 255), 2, true));
+        usernameField.setPreferredSize(new java.awt.Dimension(400, 50));
+        usernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                namaFieldActionPerformed(evt);
+                usernameFieldActionPerformed(evt);
             }
         });
-        mainPanel.add(namaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        mainPanel.add(usernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, -1));
 
         rePasswordField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 115, 255), 2, true));
         rePasswordField.setPreferredSize(new java.awt.Dimension(190, 50));
@@ -94,6 +98,11 @@ public class RegisterView extends javax.swing.JFrame {
         mainPanel.add(rePasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, -1, -1));
 
         registerButton.setForeground(new java.awt.Color(255, 255, 255));
+        registerButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registerButtonMouseClicked(evt);
+            }
+        });
         mainPanel.add(registerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, -1, -1));
 
         loginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -122,10 +131,6 @@ public class RegisterView extends javax.swing.JFrame {
         usernameLabel.setPreferredSize(new java.awt.Dimension(200, 30));
         mainPanel.add(usernameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
 
-        usernameField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 115, 255), 2, true));
-        usernameField.setPreferredSize(new java.awt.Dimension(400, 50));
-        mainPanel.add(usernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, -1));
-
         passwordField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 115, 255), 2, true));
         passwordField.setPreferredSize(new java.awt.Dimension(190, 50));
         passwordField.addActionListener(new java.awt.event.ActionListener() {
@@ -140,6 +145,16 @@ public class RegisterView extends javax.swing.JFrame {
         passwordLabel.setPreferredSize(new java.awt.Dimension(190, 30));
         mainPanel.add(passwordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, -1, -1));
 
+        namaField.setToolTipText("");
+        namaField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 115, 255), 2, true));
+        namaField.setPreferredSize(new java.awt.Dimension(400, 50));
+        namaField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                namaFieldActionPerformed(evt);
+            }
+        });
+        mainPanel.add(namaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+
         backgroundPanel.add(mainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
         getContentPane().add(backgroundPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -148,9 +163,9 @@ public class RegisterView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void namaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaFieldActionPerformed
+    private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_namaFieldActionPerformed
+    }//GEN-LAST:event_usernameFieldActionPerformed
 
     private void rePasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rePasswordFieldActionPerformed
         // TODO add your handling code here:
@@ -164,6 +179,21 @@ public class RegisterView extends javax.swing.JFrame {
         new LoginView().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_loginMouseClicked
+
+    private void registerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseClicked
+        // TODO add your handling code here:
+        String[] inputs= {usernameField.getText(),usernameField.getText(),passwordField.getText(),rePasswordField.getText()};
+        if(controller.register(inputs)){
+            new LoginView().setVisible(true);
+            this.setVisible(false);
+        }
+        
+        
+    }//GEN-LAST:event_registerButtonMouseClicked
+
+    private void namaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_namaFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,7 +244,7 @@ public class RegisterView extends javax.swing.JFrame {
     private javax.swing.JPasswordField rePasswordField;
     private javax.swing.JLabel rePasswordLabel;
     private TugasBesar.Kelompok4.Sosmed.Componenets.ButtonPanel registerButton;
-    private javax.swing.JPasswordField usernameField;
+    private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 

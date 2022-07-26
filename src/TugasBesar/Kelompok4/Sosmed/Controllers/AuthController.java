@@ -7,6 +7,7 @@ package TugasBesar.Kelompok4.Sosmed.Controllers;
 
 import TugasBesar.Kelompok4.Sosmed.Models.Model;
 import TugasBesar.Kelompok4.Sosmed.Models.UserModel;
+import TugasBesar.Kelompok4.Sosmed.Views.DashboardView;
 import java.util.Stack;
 import javax.swing.JOptionPane;
 
@@ -18,7 +19,7 @@ public class AuthController {
 
     UserModel model = new UserModel();
 
-    public void login(String username, String password) {
+    public String login(String username, String password) {
         if (username.length() == 0 || password.length() == 0) {
             JOptionPane.showMessageDialog(null, "Masukan Username/ password");
         }
@@ -27,15 +28,30 @@ public class AuthController {
             JOptionPane.showMessageDialog(null, "Username / Password Salah");
         } else {
             Stack<String> user = result.get(0);
-            if ("admin".equals(user.get(1))) {
-//                admin
-                JOptionPane.showMessageDialog(null, "Monyet sia UPI");
-            } else {
-//                user  
-                JOptionPane.showMessageDialog(null, "Selamat datang Fariz ganteng");
-            }
+            return user.get(1);
         }
+        return "";
+//        System.out.println(result);
+    }
 
-        System.out.println(result);
+    public Boolean register(String[] inputs) {
+        if (inputs[0].length() == 0 || inputs[1].length() == 0 || inputs[2].length() == 0 || inputs[3].length() == 0) {
+            JOptionPane.showMessageDialog(null, "masukan input dengan benar");
+            return false;
+        };
+        System.out.println(inputs[2]);
+        System.out.println(inputs[3]);
+        if (!inputs[2].equals(inputs[3])) {
+            JOptionPane.showMessageDialog(null, "password dan repassword tidakk sesuai");
+            return false;
+        }
+        Stack<Stack> user = model.getWhere("username='"+ inputs[1] +"'");
+        if(!user.empty()){
+            JOptionPane.showMessageDialog(null, "Username sudah terdaftar, masukan username lain");
+            return false;
+        }
+        String[] userInput={inputs[0],inputs[1],inputs[2],"2"};
+        model.create(userInput);
+        return true;
     }
 }

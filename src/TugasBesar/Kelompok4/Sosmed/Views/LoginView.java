@@ -106,6 +106,11 @@ public class LoginView extends javax.swing.JFrame {
         mainPanel.add(forgetPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, -1, -1));
 
         loginButton.setForeground(new java.awt.Color(255, 255, 255));
+        loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginButtonMouseClicked(evt);
+            }
+        });
         mainPanel.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, -1, -1));
 
         registerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -145,6 +150,19 @@ public class LoginView extends javax.swing.JFrame {
         new RegisterView().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_registerMouseClicked
+
+    private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
+        // TODO add your handling code here:
+        String roleLogged = controller.login(usernameField.getText(), passwordField.getText());
+        if ("admin".equals(roleLogged)){
+            this.setVisible(false);
+            new DashboardView().setVisible(true);
+        }else if("user".equals(roleLogged)){
+            this.setVisible(false);
+            new HomeView().setVisible(true);
+            
+        }
+    }//GEN-LAST:event_loginButtonMouseClicked
    
     /**
      * @param args the command line arguments
