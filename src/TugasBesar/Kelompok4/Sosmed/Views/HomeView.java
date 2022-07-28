@@ -5,9 +5,14 @@
  */
 package TugasBesar.Kelompok4.Sosmed.Views;
 
+import TugasBesar.Kelompok4.Sosmed.Componenets.CardDashboardLabel;
 import TugasBesar.Kelompok4.Sosmed.Componenets.CardPanel;
 import TugasBesar.Kelompok4.Sosmed.Controllers.PostController;
+import java.awt.Color;
 import java.util.Stack;
+import javax.swing.JFrame;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -21,7 +26,12 @@ public class HomeView extends javax.swing.JFrame {
     PostController controller;
     public HomeView() {
         initComponents();
+        this.setResizable(false);
+        this.setExtendedState(JFrame.MAXIMIZED_HORIZ);
         controller = new PostController();
+        homeButton.setText("Home");
+        profileButton.setText("Profile");
+        homeButton.isAtctive(true);
         loadPost();
     }
 
@@ -34,33 +44,88 @@ public class HomeView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        profileButton = new TugasBesar.Kelompok4.Sosmed.Componenets.CardDashboardLabel();
+        homeButton = new TugasBesar.Kelompok4.Sosmed.Componenets.CardDashboardLabel();
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel6 = new javax.swing.JPanel();
+        createPostPanel1 = new TugasBesar.Kelompok4.Sosmed.Componenets.CreatePostPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1440, 1024));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 715, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 691, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(5, 5, 5)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
-                    .addGap(5, 5, 5)))
-        );
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1440, 984));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(21, 115, 255));
+        jPanel3.setPreferredSize(new java.awt.Dimension(1440, 100));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("FSociety");
+        jLabel1.setPreferredSize(new java.awt.Dimension(200, 100));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, -1));
+
+        profileButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                profileButtonMouseClicked(evt);
+            }
+        });
+        jPanel3.add(profileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, -1, -1));
+
+        homeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeButtonMouseClicked(evt);
+            }
+        });
+        jPanel3.add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, -1, -1));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1440, 884));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setForeground(new java.awt.Color(153, 153, 255));
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1440, 600));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jScrollPane1.setViewportView(jPanel6);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 284, 1480, -1));
+        jPanel1.add(createPostPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void profileButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileButtonMouseClicked
+        // TODO add your handling code here:
+        profileButton.isAtctive(true);
+        homeButton.isAtctive(false);
+        
+    }//GEN-LAST:event_profileButtonMouseClicked
+
+    private void homeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeButtonMouseClicked
+        // TODO add your handling code here:
+        profileButton.isAtctive(false);
+        homeButton.isAtctive(true);
+        
+    }//GEN-LAST:event_homeButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -68,19 +133,19 @@ public class HomeView extends javax.swing.JFrame {
     public void loadPost(){
              Stack<Stack> data = controller.get();
         
-        jPanel1.removeAll();
-        jPanel1.revalidate();
-        for (Stack<String> row : data) {
-            CardPanel card = new CardPanel();
-            System.out.println(row);
-            card.setName(row.get(0));
-            card.setTitle(row.get(1));
-            card.setDesc(row.get(2));
-            card.setDate(row.get(3));
-
-            jPanel1.add(card);
-        }
-        jPanel1.revalidate();
+//        jPanel1.removeAll();
+//        jPanel1.revalidate();
+//        for (Stack<String> row : data) {
+//            CardPanel card = new CardPanel();
+//            System.out.println(row);
+//            card.setName(row.get(0));
+//            card.setTitle(row.get(1));
+//            card.setDesc(row.get(2));
+//            card.setDate(row.get(3));
+//
+//            jPanel1.add(card);
+//        }
+//        jPanel1.revalidate();
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -115,6 +180,14 @@ public class HomeView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private TugasBesar.Kelompok4.Sosmed.Componenets.CreatePostPanel createPostPanel1;
+    private TugasBesar.Kelompok4.Sosmed.Componenets.CardDashboardLabel homeButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private TugasBesar.Kelompok4.Sosmed.Componenets.CardDashboardLabel profileButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,6 +7,7 @@
 package TugasBesar.Kelompok4.Sosmed.Views;
 
 import TugasBesar.Kelompok4.Sosmed.Controllers.AuthController;
+import javax.swing.JFrame;
 
 /**
  *
@@ -19,6 +20,7 @@ public class RegisterView extends javax.swing.JFrame {
     public RegisterView() {
         initComponents();
         this.setResizable(false);
+        this.setExtendedState(JFrame.MAXIMIZED_HORIZ);
         registerButton.setText("Register");
         controller = new AuthController();
     }
@@ -105,21 +107,21 @@ public class RegisterView extends javax.swing.JFrame {
         });
         mainPanel.add(registerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, -1, -1));
 
-        loginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        loginLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         loginLabel.setText("Sudah mempunyai akun?");
         loginLabel.setPreferredSize(new java.awt.Dimension(300, 30));
-        mainPanel.add(loginLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 580, 190, -1));
+        mainPanel.add(loginLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 580, 180, -1));
 
         login.setForeground(new java.awt.Color(21, 115, 255));
-        login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         login.setText("Login");
+        login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         login.setPreferredSize(new java.awt.Dimension(300, 30));
         login.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 loginMouseClicked(evt);
             }
         });
-        mainPanel.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 580, 50, -1));
+        mainPanel.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 580, 40, -1));
 
         copyright.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         copyright.setText("Copyright (c) 2022, FSociety");

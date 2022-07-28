@@ -10,6 +10,7 @@ package TugasBesar.Kelompok4.Sosmed.Views;
 import TugasBesar.Kelompok4.Sosmed.Controllers.AuthController;
 //import java.awt.BorderLayout;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.border.AbstractBorder;
 import javax.swing.border.CompoundBorder;
@@ -28,6 +29,7 @@ public class LoginView extends javax.swing.JFrame {
     public LoginView() {
         initComponents();
         controller=new AuthController();
+        this.setExtendedState(JFrame.MAXIMIZED_HORIZ);
         this.setResizable(false);
         loginButton.setText("Login");
     }
@@ -102,7 +104,13 @@ public class LoginView extends javax.swing.JFrame {
         forgetPassword.setForeground(new java.awt.Color(21, 115, 255));
         forgetPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         forgetPassword.setText("Lupa Password?");
+        forgetPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         forgetPassword.setPreferredSize(new java.awt.Dimension(150, 30));
+        forgetPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                forgetPasswordMouseClicked(evt);
+            }
+        });
         mainPanel.add(forgetPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, -1, -1));
 
         loginButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -121,6 +129,7 @@ public class LoginView extends javax.swing.JFrame {
         register.setForeground(new java.awt.Color(21, 115, 255));
         register.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         register.setText("Daftar Sekarang!");
+        register.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         register.setPreferredSize(new java.awt.Dimension(300, 30));
         register.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -163,6 +172,12 @@ public class LoginView extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_loginButtonMouseClicked
+
+    private void forgetPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgetPasswordMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new ForgetPasswordView().setVisible(true);
+    }//GEN-LAST:event_forgetPasswordMouseClicked
    
     /**
      * @param args the command line arguments
