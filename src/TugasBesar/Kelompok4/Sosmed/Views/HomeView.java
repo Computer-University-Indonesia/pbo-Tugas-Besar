@@ -7,9 +7,11 @@ package TugasBesar.Kelompok4.Sosmed.Views;
 
 import TugasBesar.Kelompok4.Sosmed.Componenets.CardDashboardLabel;
 import TugasBesar.Kelompok4.Sosmed.Componenets.CardPanel;
+import TugasBesar.Kelompok4.Sosmed.Componenets.CreatePostPanel;
 import TugasBesar.Kelompok4.Sosmed.Controllers.PostController;
 import java.awt.Color;
 import java.util.Stack;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -24,6 +26,7 @@ public class HomeView extends javax.swing.JFrame {
      * Creates new form HomeView
      */
     PostController controller;
+
     public HomeView() {
         initComponents();
         this.setResizable(false);
@@ -55,7 +58,6 @@ public class HomeView extends javax.swing.JFrame {
         createPostPanel1 = new TugasBesar.Kelompok4.Sosmed.Componenets.CreatePostPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1440, 1024));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -100,10 +102,16 @@ public class HomeView extends javax.swing.JFrame {
         jScrollPane1.setPreferredSize(new java.awt.Dimension(1440, 600));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.LINE_AXIS));
         jScrollPane1.setViewportView(jPanel6);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 284, 1480, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 1480, -1));
+
+        createPostPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                createPostPanel1MouseClicked(evt);
+            }
+        });
         jPanel1.add(createPostPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, -1));
@@ -117,36 +125,47 @@ public class HomeView extends javax.swing.JFrame {
         // TODO add your handling code here:
         profileButton.isAtctive(true);
         homeButton.isAtctive(false);
-        
+
     }//GEN-LAST:event_profileButtonMouseClicked
 
     private void homeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeButtonMouseClicked
         // TODO add your handling code here:
         profileButton.isAtctive(false);
         homeButton.isAtctive(true);
-        
+
     }//GEN-LAST:event_homeButtonMouseClicked
+
+    private void createPostPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createPostPanel1MouseClicked
+        // TODO add your handling code here:
+        boolean created = CreatePostPanel.isCreated;    
+        if(created){
+            loadPost();
+        }
+    }//GEN-LAST:event_createPostPanel1MouseClicked
 
     /**
      * @param args the command line arguments
      */
-    public void loadPost(){
-             Stack<Stack> data = controller.get();
-        
-//        jPanel1.removeAll();
-//        jPanel1.revalidate();
-//        for (Stack<String> row : data) {
-//            CardPanel card = new CardPanel();
-//            System.out.println(row);
-//            card.setName(row.get(0));
-//            card.setTitle(row.get(1));
-//            card.setDesc(row.get(2));
-//            card.setDate(row.get(3));
-//
-//            jPanel1.add(card);
-//        }
-//        jPanel1.revalidate();
+    public void loadPost() {
+        Stack<Stack> data = controller.get();
+        jPanel6.setLayout(new BoxLayout(jPanel6, BoxLayout.Y_AXIS));
+
+        jPanel6.removeAll();
+        jPanel6.revalidate();
+        for (Stack<String> row : data) {
+            CardPanel card = new CardPanel();
+            System.out.println(row);
+
+            card.setName(row.get(0));
+            card.setTitle(row.get(1));
+            card.setDesc(row.get(2));
+            card.setDate(row.get(3));
+
+            jPanel6.add(card);
+        }
+//        jPanel6.revalidate();
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

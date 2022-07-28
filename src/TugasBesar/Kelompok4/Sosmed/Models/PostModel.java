@@ -5,6 +5,7 @@
  */
 package TugasBesar.Kelompok4.Sosmed.Models;
 
+import java.time.LocalDate;
 import java.util.Stack;
 
 /**
@@ -19,7 +20,7 @@ public class PostModel extends Model {
 
     @Override
     public void create(String[] values) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.getDatabase().create("title,description,user_id,created_at",values);
     }
 
     @Override
@@ -35,8 +36,8 @@ public class PostModel extends Model {
 
     public Stack getWithUser() {
          return super.getDatabase()
-                .getAllUseQuery("SELECT users.name AS name,title,description,created_at "
-                        + "FROM posts JOIN users ON posts.user_id = users.id");
+                .getAllUseQuery("SELECT users.name AS name,title,description,created_at,posts.id as post_id "
+                        + "FROM posts JOIN users ON posts.user_id = users.id ORDER BY post_id DESC");
 
     }
 
