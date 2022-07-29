@@ -19,7 +19,8 @@ public class PostModel extends Model {
 
     @Override
     public void create(String[] values) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.getDatabase().create("title,description,user_id,created_at", values);
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -33,16 +34,13 @@ public class PostModel extends Model {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Stack getWithUser() {
-         return super.getDatabase()
-                .getAllUseQuery("SELECT users.name AS name,title,description,created_at "
-                        + "FROM posts JOIN users ON posts.user_id = users.id");
-
-    }
-
     @Override
     public void delete(String where) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    public Stack GetPostAndUsers(){
+    Stack<Stack>Get=super.getDatabase().getAllUseQuery("SELECT posts.title,users.name,posts.description FROM posts JOIN users ON posts.user_id=users.id");
+    return Get;
+    
+ }
 }

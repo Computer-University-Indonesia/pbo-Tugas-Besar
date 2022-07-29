@@ -5,6 +5,7 @@
  */
 package TugasBesar.Kelompok4.Sosmed.Componenets;
 
+import TugasBesar.Kelompok4.Sosmed.Controllers.PostController;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 
@@ -17,6 +18,8 @@ public class CreatePostPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreatePostPanel
      */
+           PostController button=new PostController();
+
     public CreatePostPanel() {
         initComponents();
     }
@@ -70,6 +73,11 @@ public class CreatePostPanel extends javax.swing.JPanel {
         titleField.setText("Title");
         titleField.setBorder(null);
         titleField.setPreferredSize(new java.awt.Dimension(260, 50));
+        titleField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                titleFieldActionPerformed(evt);
+            }
+        });
         backgroundTitle.add(titleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
         backgroundPanel.add(backgroundTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
@@ -97,6 +105,9 @@ public class CreatePostPanel extends javax.swing.JPanel {
         postButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         postButton.setPreferredSize(new java.awt.Dimension(150, 40));
         postButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                postButtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 postButtonMouseEntered(evt);
             }
@@ -111,6 +122,11 @@ public class CreatePostPanel extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Post");
         jLabel2.setPreferredSize(new java.awt.Dimension(150, 40));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
         postButton.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         backgroundPanel.add(postButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 200, -1, -1));
@@ -127,6 +143,21 @@ public class CreatePostPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         postButton.setBorder(new LineBorder(new Color(21,115,255),25,true));
     }//GEN-LAST:event_postButtonMouseExited
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+          button.ForSend(titleField.getText(),postField.getText());
+        System.out.println("button telah di klik");
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void postButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_postButtonMouseClicked
+    
+        // TODO add your handling code here:
+    }//GEN-LAST:event_postButtonMouseClicked
+
+    private void titleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_titleFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

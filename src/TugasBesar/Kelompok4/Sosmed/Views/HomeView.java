@@ -100,7 +100,6 @@ public class HomeView extends javax.swing.JFrame {
         jScrollPane1.setPreferredSize(new java.awt.Dimension(1440, 600));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jScrollPane1.setViewportView(jPanel6);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 284, 1480, -1));
@@ -131,8 +130,21 @@ public class HomeView extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public void loadPost(){
-             Stack<Stack> data = controller.get();
-        
+      Stack<Stack>Vdata=controller.get();
+      System.out.println(Vdata);
+     
+     jPanel6.removeAll();
+     jPanel6.revalidate();
+//     for data in Vdata
+       for(Stack<String> Hvi : Vdata){
+     CardPanel Hview= new CardPanel();
+     Hview.setTitle(Hvi.get(0));
+     Hview.setName(Hvi.get(1));
+     Hview.setDesc(Hvi.get(2));
+      jPanel6.add(Hview);
+      
+    }
+     jPanel6.revalidate();
 //        jPanel1.removeAll();
 //        jPanel1.revalidate();
 //        for (Stack<String> row : data) {
