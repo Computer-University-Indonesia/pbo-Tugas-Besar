@@ -31,4 +31,8 @@ public class PostController {
         model.create(values);
         JOptionPane.showMessageDialog(null, "berhasil menambahkan post");
     }
+    public Stack getDetail(String id ){
+        Stack<Stack> posts =model.getWithUserWhere(id);
+        return posts.get(0);
+    }
 }

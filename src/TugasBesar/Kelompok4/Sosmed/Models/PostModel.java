@@ -36,8 +36,15 @@ public class PostModel extends Model {
 
     public Stack getWithUser() {
          return super.getDatabase()
-                .getAllUseQuery("SELECT users.name AS name,title,description,created_at,posts.id as post_id "
+                .getAllUseQuery("SELECT users.name AS name,title,description,created_at,posts.id as post_id,like_count "
                         + "FROM posts JOIN users ON posts.user_id = users.id ORDER BY post_id DESC");
+
+    }
+     public Stack getWithUserWhere(String id ) {
+         return super.getDatabase()
+                .getAllUseQuery("SELECT users.name AS name,title,description,created_at,posts.id as post_id "
+                        + "FROM posts JOIN users ON posts.user_id = users.id  "
+                        + "WHERE posts.id='"+id+"'");
 
     }
 

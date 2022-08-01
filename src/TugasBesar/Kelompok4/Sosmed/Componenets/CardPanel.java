@@ -5,6 +5,7 @@
  */
 package TugasBesar.Kelompok4.Sosmed.Componenets;
 
+import TugasBesar.Kelompok4.Sosmed.Views.PostDetailView;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
@@ -19,14 +20,28 @@ public class CardPanel extends javax.swing.JPanel {
     /**
      * Creates new form CardPanel
      */
+    private String id;
+
     public CardPanel() {
         initComponents();
+        
+    }
+    
+    public void hideButton(){
+            detailButton.setVisible(false);
+            detailButton.setEnabled(false);
+    }
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setName(String TXTName) {
         this.TXTName.setText(TXTName);
     }
-
 
     public void setTitle(String text) {
         this.TXTTittle.setText(text);
@@ -39,7 +54,9 @@ public class CardPanel extends javax.swing.JPanel {
     public void setDate(String text) {
         this.TXTDate.setText(text);
     }
-
+    public void setLikeCount(String text){
+        this.TXTLike.setText(text);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -136,6 +153,9 @@ public class CardPanel extends javax.swing.JPanel {
         detailText.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         detailText.setPreferredSize(new java.awt.Dimension(40, 30));
         detailText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                detailTextMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 detailTextMouseEntered(evt);
             }
@@ -153,9 +173,9 @@ public class CardPanel extends javax.swing.JPanel {
     private void likeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_likeButtonMouseClicked
         // TODO add your handling code here:
         isLiked = !isLiked;
-        if(isLiked == true){
+        if (isLiked == true) {
             this.TXTLike.setText("200");
-        }else{
+        } else {
             this.TXTLike.setText("500");
         }
     }//GEN-LAST:event_likeButtonMouseClicked
@@ -164,30 +184,36 @@ public class CardPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_backgorundPanelMouseClicked
 
-    private void detailButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailButtonMouseEntered
-        // TODO add your handling code here:
-        detailButton.setBorder(new LineBorder(new Color(1, 95, 235), 25, true));
-    }//GEN-LAST:event_detailButtonMouseEntered
-
     private void detailButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailButtonMouseExited
         // TODO add your handling code here:
         detailButton.setBorder(new LineBorder(new Color(21, 115, 255), 25, true));
     }//GEN-LAST:event_detailButtonMouseExited
 
+    private void detailButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailButtonMouseEntered
+        // TODO add your handling code here:
+        detailButton.setBorder(new LineBorder(new Color(1, 95, 235), 25, true));
+    }//GEN-LAST:event_detailButtonMouseEntered
+
     private void detailButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailButtonMouseClicked
         // TODO add your handling code here:
-        System.out.println("Detail Post");
     }//GEN-LAST:event_detailButtonMouseClicked
+
+    private void detailTextMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailTextMouseExited
+        // TODO add your handling code here:
+        detailButton.setBorder(new LineBorder(new Color(21, 115, 255), 25, true));
+    }//GEN-LAST:event_detailTextMouseExited
 
     private void detailTextMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailTextMouseEntered
         // TODO add your handling code here:
         detailButton.setBorder(new LineBorder(new Color(1, 95, 235), 25, true));
     }//GEN-LAST:event_detailTextMouseEntered
 
-    private void detailTextMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailTextMouseExited
+    private void detailTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailTextMouseClicked
         // TODO add your handling code here:
-        detailButton.setBorder(new LineBorder(new Color(21, 115, 255), 25, true));
-    }//GEN-LAST:event_detailTextMouseExited
+        System.out.println(this.getId());
+        PostDetailView detail = new PostDetailView(this.getId());
+        detail.setVisible(true);
+    }//GEN-LAST:event_detailTextMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

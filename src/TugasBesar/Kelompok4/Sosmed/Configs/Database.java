@@ -112,7 +112,7 @@ public class Database {
 
     public Boolean update(String set, String where) {
         try {
-            int isCreated = this.sqlStatement.executeUpdate("UPDATE INTO " + table + "SET " + set + " WHERE " + where);
+            int isCreated = this.sqlStatement.executeUpdate("UPDATE " + table + " SET " + set + " WHERE " + where);
             if (isCreated <= 0) {
                 return false;
             }

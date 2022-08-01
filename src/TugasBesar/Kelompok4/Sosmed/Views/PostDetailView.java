@@ -5,7 +5,11 @@
  */
 package TugasBesar.Kelompok4.Sosmed.Views;
 
+import TugasBesar.Kelompok4.Sosmed.Componenets.CardPanel;
+import TugasBesar.Kelompok4.Sosmed.Controllers.PostController;
 import java.awt.Color;
+import java.util.Stack;
+import javax.swing.BoxLayout;
 import javax.swing.border.LineBorder;
 
 /**
@@ -17,8 +21,39 @@ public class PostDetailView extends javax.swing.JFrame {
     /**
      * Creates new form PostDetailView
      */
+    PostController controller;
+    private String postId;
+
     public PostDetailView() {
         initComponents();
+    }
+
+    public PostDetailView(String id) {
+                initComponents();
+
+        this.setPostId(id);
+        controller = new PostController();
+        LoadPost();
+
+    }
+
+    public String getPostId() {
+        return postId;
+    }
+
+    public void setPostId(String postId) {
+        this.postId = postId;
+    }
+
+    private void LoadPost() {
+//        System.out.println(this.getPostId());
+        Stack<String> post = controller.getDetail(this.getPostId());
+        System.out.println("post = "+ post);
+        cardPanel1.setName(post.get(0));
+        cardPanel1.setTitle(post.get(1));
+        cardPanel1.setDesc(post.get(2));
+        cardPanel1.setDate(post.get(3));
+        cardPanel1.hideButton();
     }
 
     /**
@@ -37,11 +72,11 @@ public class PostDetailView extends javax.swing.JFrame {
         commentButton = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         postPanel = new javax.swing.JPanel();
+        cardPanel1 = new TugasBesar.Kelompok4.Sosmed.Componenets.CardPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1440, 1024));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -102,7 +137,9 @@ public class PostDetailView extends javax.swing.JFrame {
 
         postPanel.setBackground(new java.awt.Color(255, 255, 255));
         postPanel.setPreferredSize(new java.awt.Dimension(1440, 264));
-        postPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        postPanel.setLayout(new javax.swing.BoxLayout(postPanel, javax.swing.BoxLayout.LINE_AXIS));
+        postPanel.add(cardPanel1);
+
         jPanel1.add(postPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -199,6 +236,7 @@ public class PostDetailView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private TugasBesar.Kelompok4.Sosmed.Componenets.CardPanel cardPanel1;
     private javax.swing.JPanel commentButton;
     private javax.swing.JTextArea commentField;
     private javax.swing.JPanel createComment;

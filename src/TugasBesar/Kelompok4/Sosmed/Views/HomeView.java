@@ -278,11 +278,12 @@ public class HomeView extends javax.swing.JFrame {
         jPanel6.revalidate();
         for (Stack<String> row : data) {
             CardPanel card = new CardPanel();
-
+            card.setId(row.get(4));
             card.setName(row.get(0));
             card.setTitle(row.get(1));
             card.setDesc(row.get(2));
             card.setDate(row.get(3));
+            card.setLikeCount(row.get(5));
 
             jPanel6.add(card);
         }

@@ -58,4 +58,15 @@ public class AuthController {
         model.create(userInput);
         return true;
     }
+    public Boolean forgetPassword(String[] inputs){
+        Stack<Stack> user = model.getWhere("name='"+inputs[0]+"' AND username ='"+inputs[1]+"'");
+        System.out.println(user);
+        if(user.empty()){
+            JOptionPane.showMessageDialog(null, "Nama / Username Salah");
+            return false;
+        }else{
+            model.update("password = '"+inputs[2]+"'", "id="+user.get(0).get(0));
+        }
+        return true;
+    }
 }

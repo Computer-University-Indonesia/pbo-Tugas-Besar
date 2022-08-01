@@ -17,11 +17,13 @@ public class ForgetPasswordView extends javax.swing.JFrame {
     /**
      * Creates new form ForgetPasswordView
      */
+    AuthController controller;
     public ForgetPasswordView() {
         initComponents();
         this.setResizable(false);
         this.setExtendedState(JFrame.MAXIMIZED_HORIZ);
         saveButton.setText("Save");
+        controller = new AuthController();
     }
 
     /**
@@ -125,6 +127,12 @@ public class ForgetPasswordView extends javax.swing.JFrame {
 
     private void saveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMouseClicked
         // TODO add your handling code here:
+        String[] inputs = {namaField.getText(),usernameField.getText(),newPasswordField.getText()};
+        Boolean isSuccess= controller.forgetPassword(inputs);
+        if(isSuccess){
+            new LoginView().setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_saveButtonMouseClicked
 
     /**

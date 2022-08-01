@@ -36,7 +36,8 @@ public class UserModel  extends Model{
 
     @Override
     public void update(String set, String where) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.getDatabase().update(set, where);
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
