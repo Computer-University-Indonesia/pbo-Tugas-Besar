@@ -5,7 +5,9 @@
  */
 package TugasBesar.Kelompok4.Sosmed.Views;
 
+import TugasBesar.Kelompok4.Sosmed.Componenets.CardComment;
 import TugasBesar.Kelompok4.Sosmed.Componenets.CardPanel;
+import TugasBesar.Kelompok4.Sosmed.Controllers.CommentController;
 import TugasBesar.Kelompok4.Sosmed.Controllers.PostController;
 import java.awt.Color;
 import java.util.Stack;
@@ -22,6 +24,7 @@ public class PostDetailView extends javax.swing.JFrame {
      * Creates new form PostDetailView
      */
     PostController controller;
+    CommentController commentController;
     private String postId;
 
     public PostDetailView() {
@@ -29,11 +32,13 @@ public class PostDetailView extends javax.swing.JFrame {
     }
 
     public PostDetailView(String id) {
-                initComponents();
+        initComponents();
 
         this.setPostId(id);
         controller = new PostController();
+        commentController = new CommentController();
         LoadPost();
+        loadComment();
 
     }
 
@@ -48,7 +53,7 @@ public class PostDetailView extends javax.swing.JFrame {
     private void LoadPost() {
 //        System.out.println(this.getPostId());
         Stack<String> post = controller.getDetail(this.getPostId());
-        System.out.println("post = "+ post);
+        System.out.println("post = " + post);
         cardPanel1.setName(post.get(0));
         cardPanel1.setTitle(post.get(1));
         cardPanel1.setDesc(post.get(2));
@@ -66,6 +71,7 @@ public class PostDetailView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         createComment = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         commentField = new javax.swing.JTextArea();
@@ -74,7 +80,7 @@ public class PostDetailView extends javax.swing.JFrame {
         postPanel = new javax.swing.JPanel();
         cardPanel1 = new TugasBesar.Kelompok4.Sosmed.Componenets.CardPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel3 = new javax.swing.JPanel();
+        commentPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,6 +88,14 @@ public class PostDetailView extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1440, 984));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("jButton1");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 50, -1, -1));
 
         createComment.setBackground(new java.awt.Color(255, 255, 255));
         createComment.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(240, 240, 240), 100, true));
@@ -143,26 +157,16 @@ public class PostDetailView extends javax.swing.JFrame {
         jPanel1.add(postPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(240, 240, 240), 50, true));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setForeground(new java.awt.Color(153, 153, 255));
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(1300, 500));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1300, 600));
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        commentPanel.setBackground(new java.awt.Color(255, 255, 255));
+        commentPanel.setLayout(new javax.swing.BoxLayout(commentPanel, javax.swing.BoxLayout.LINE_AXIS));
+        jScrollPane1.setViewportView(commentPanel);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1200, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-
-        jScrollPane1.setViewportView(jPanel3);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 484, -1, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 484, -1, 500));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -171,7 +175,13 @@ public class PostDetailView extends javax.swing.JFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
+        String post_id = this.postId;
+        String comment = commentField.getText();
+        String[] inputs = {post_id, comment};
+        commentController.store(inputs);
         commentField.setText("");
+        loadComment();
+
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
@@ -199,6 +209,12 @@ public class PostDetailView extends javax.swing.JFrame {
         // TODO add your handling code here:
         commentButton.setBorder(new LineBorder(new Color(21, 115, 255), 25, true));
     }//GEN-LAST:event_commentButtonMouseExited
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        new HomeView().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -239,12 +255,29 @@ public class PostDetailView extends javax.swing.JFrame {
     private TugasBesar.Kelompok4.Sosmed.Componenets.CardPanel cardPanel1;
     private javax.swing.JPanel commentButton;
     private javax.swing.JTextArea commentField;
+    private javax.swing.JPanel commentPanel;
     private javax.swing.JPanel createComment;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel postPanel;
     // End of variables declaration//GEN-END:variables
+
+    public void loadComment() {
+        Stack<Stack> data = commentController.getDetail(this.postId);
+
+        commentPanel.setLayout(new BoxLayout(commentPanel, BoxLayout.Y_AXIS));
+
+        commentPanel.removeAll();
+        commentPanel.revalidate();
+        for (Stack<String> row : data) {
+            CardComment card = new CardComment();
+            card.setNama(row.get(1));
+            card.setComment(row.get(2));
+            commentPanel.add(card);
+        }
+    }
+
 }

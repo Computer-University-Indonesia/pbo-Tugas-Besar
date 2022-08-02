@@ -24,13 +24,15 @@ public class CardPanel extends javax.swing.JPanel {
 
     public CardPanel() {
         initComponents();
-        
+
     }
-    
-    public void hideButton(){
-            detailButton.setVisible(false);
-            detailButton.setEnabled(false);
+
+    public void hideButton() {
+        detailButton.setVisible(false);
+        detailButton.setEnabled(false);
+
     }
+
     public String getId() {
         return id;
     }
@@ -54,9 +56,11 @@ public class CardPanel extends javax.swing.JPanel {
     public void setDate(String text) {
         this.TXTDate.setText(text);
     }
-    public void setLikeCount(String text){
+
+    public void setLikeCount(String text) {
         this.TXTLike.setText(text);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
