@@ -165,7 +165,7 @@ public class LoginView extends javax.swing.JFrame {
         String roleLogged = controller.login(usernameField.getText(), passwordField.getText());
         if ("admin".equals(roleLogged)){
             this.setVisible(false);
-            new DashboardView().setVisible(true);
+            new UserManagement().setVisible(true);
         }else if("user".equals(roleLogged)){
             this.setVisible(false);
             new HomeView().setVisible(true);

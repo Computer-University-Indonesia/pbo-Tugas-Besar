@@ -27,6 +27,12 @@ public class UserModel  extends Model{
                         + "FROM users JOIN roles ON users.role_id = roles.id WHERE "+where);
         
     }
+    public Stack getUserWithRole(){
+        return super.getDatabase()
+                .getAllUseQuery("SELECT users.id as user_id,users.name AS name,roles.name AS user_role,username,password "
+                        + "FROM users JOIN roles ON users.role_id = roles.id ");
+        
+    }
     @Override
     public void create(String[] values) {
 //        {"AS","ASD","PASSWORD"}
