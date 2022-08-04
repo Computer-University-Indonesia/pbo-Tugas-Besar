@@ -6,7 +6,6 @@
 package TugasBesar.Kelompok4.Sosmed.Views;
 
 import TugasBesar.Kelompok4.Sosmed.Componenets.CardComment;
-import TugasBesar.Kelompok4.Sosmed.Componenets.CardPanel;
 import TugasBesar.Kelompok4.Sosmed.Controllers.CommentController;
 import TugasBesar.Kelompok4.Sosmed.Controllers.PostController;
 import java.awt.Color;
@@ -58,6 +57,8 @@ public class PostDetailView extends javax.swing.JFrame {
         cardPanel1.setTitle(post.get(1));
         cardPanel1.setDesc(post.get(2));
         cardPanel1.setDate(post.get(3));
+        cardPanel1.setLikeCount(post.get(5));
+        cardPanel1.setId(post.get(4));
         cardPanel1.hideButton();
     }
 

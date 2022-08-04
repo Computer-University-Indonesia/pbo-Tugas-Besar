@@ -25,7 +25,9 @@ public class PostModel extends Model {
 
     @Override
     public void update(String set, String where) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.getDatabase().update(set, where);
+        
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -42,7 +44,7 @@ public class PostModel extends Model {
     }
      public Stack getWithUserWhere(String id ) {
          return super.getDatabase()
-                .getAllUseQuery("SELECT users.name AS name,title,description,created_at,posts.id as post_id "
+                .getAllUseQuery("SELECT users.name AS name,title,description,created_at,posts.id as post_id,like_count "
                         + "FROM posts JOIN users ON posts.user_id = users.id  "
                         + "WHERE posts.id='"+id+"'");
 

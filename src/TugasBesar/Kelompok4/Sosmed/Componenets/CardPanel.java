@@ -5,8 +5,10 @@
  */
 package TugasBesar.Kelompok4.Sosmed.Componenets;
 
+import TugasBesar.Kelompok4.Sosmed.Controllers.PostController;
 import TugasBesar.Kelompok4.Sosmed.Views.PostDetailView;
 import java.awt.Color;
+import java.util.Stack;
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 
@@ -15,6 +17,8 @@ import javax.swing.border.LineBorder;
  * @author sahanya
  */
 public class CardPanel extends javax.swing.JPanel {
+
+    PostController mode = new PostController();
 
     public boolean isLiked = false;
     /**
@@ -175,13 +179,14 @@ public class CardPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void likeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_likeButtonMouseClicked
-        // TODO add your handling code here:
+
+// TODO add your handling code here:
         isLiked = !isLiked;
-        if (isLiked == true) {
-            this.TXTLike.setText("200");
-        } else {
-            this.TXTLike.setText("500");
-        }
+        Integer GetTLike = Integer.parseInt(TXTLike.getText());
+        mode.Liker(GetTLike, isLiked, id);
+
+        Stack<String> PostUpdated = mode.getDetail(id);
+        TXTLike.setText(PostUpdated.get(5));
     }//GEN-LAST:event_likeButtonMouseClicked
 
     private void backgorundPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backgorundPanelMouseClicked

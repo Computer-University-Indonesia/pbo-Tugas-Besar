@@ -54,4 +54,13 @@ public class PostController {
         Stack<Stack> posts =model.getWithUserWhere(id);
         return posts.get(0);
     }
+    public void Liker(Integer like,Boolean Islike,String PostID){
+        Integer PlusLike;
+        if(Islike==true){
+            PlusLike=like+1;
+        }else{
+            PlusLike=like-1;
+        }
+        model.update("like_count='"+PlusLike+"'","id='"+PostID+"'");
+    }
 }
