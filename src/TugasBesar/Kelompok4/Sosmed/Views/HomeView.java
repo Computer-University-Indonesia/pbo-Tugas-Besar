@@ -228,9 +228,8 @@ public class HomeView extends javax.swing.JFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
-        String[] inputs = {titleField.getText(), postField.getText()};
 
-        controller.store(inputs);
+        controller.store(titleField.getText(), postField.getText());
         loadPost();
         this.titleField.setText("Title");
         this.postField.setText("");
