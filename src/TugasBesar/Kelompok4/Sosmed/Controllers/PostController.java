@@ -34,6 +34,11 @@ public class PostController {
         return Data;
  
     }
+  
+  public Stack getMyPost(){
+      Stack<Stack> Data = model.getMyPost();
+      return Data;
+  }
  
     public void store(String title, String description) {
         if (title.length() == 0) {

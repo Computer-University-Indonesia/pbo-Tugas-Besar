@@ -50,6 +50,9 @@ public class HomeView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         profileButton = new TugasBesar.Kelompok4.Sosmed.Componenets.CardDashboardLabel();
         homeButton = new TugasBesar.Kelompok4.Sosmed.Componenets.CardDashboardLabel();
+        logoutButton = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel6 = new javax.swing.JPanel();
@@ -95,6 +98,36 @@ public class HomeView extends javax.swing.JFrame {
             }
         });
         jPanel3.add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, -1, -1));
+
+        logoutButton.setBackground(new java.awt.Color(21, 115, 255));
+        logoutButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 25, true));
+        logoutButton.setPreferredSize(new java.awt.Dimension(150, 40));
+        logoutButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TugasBesar/Kelompok4/Sosmed/Assets/logout.png"))); // NOI18N
+        jLabel3.setPreferredSize(new java.awt.Dimension(32, 32));
+        logoutButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 4, -1, -1));
+
+        jLabel4.setBackground(new java.awt.Color(21, 115, 255));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(21, 115, 255));
+        jLabel4.setText("  Logout");
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.setPreferredSize(new java.awt.Dimension(150, 40));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel4MouseExited(evt);
+            }
+        });
+        logoutButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel3.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 30, -1, -1));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -266,6 +299,20 @@ public class HomeView extends javax.swing.JFrame {
         this.titleField.setText("");
     }//GEN-LAST:event_titleFieldMouseClicked
 
+    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
+        // TODO add your handling code here:
+        logoutButton.setBorder(new LineBorder(new Color(230, 230, 230), 25, true));
+    }//GEN-LAST:event_jLabel4MouseEntered
+
+    private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
+        // TODO add your handling code here:
+        logoutButton.setBorder(new LineBorder(new Color(255, 255, 255), 25, true));
+    }//GEN-LAST:event_jLabel4MouseExited
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -328,12 +375,15 @@ public class HomeView extends javax.swing.JFrame {
     private TugasBesar.Kelompok4.Sosmed.Componenets.CardDashboardLabel homeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel logoutButton;
     private javax.swing.JLabel nama;
     private javax.swing.JPanel namaPanel;
     private javax.swing.JPanel postButton;

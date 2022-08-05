@@ -72,7 +72,7 @@ public class PostDetailView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        backButton = new javax.swing.JLabel();
         createComment = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         commentField = new javax.swing.JTextArea();
@@ -90,13 +90,15 @@ public class PostDetailView extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1440, 984));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("jButton1");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TugasBesar/Kelompok4/Sosmed/Assets/back-button.png"))); // NOI18N
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backButton.setPreferredSize(new java.awt.Dimension(32, 32));
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                backButtonMouseClicked(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 50, -1, -1));
+        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1335, 50, -1, -1));
 
         createComment.setBackground(new java.awt.Color(255, 255, 255));
         createComment.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(240, 240, 240), 100, true));
@@ -172,6 +174,7 @@ public class PostDetailView extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -211,11 +214,9 @@ public class PostDetailView extends javax.swing.JFrame {
         commentButton.setBorder(new LineBorder(new Color(21, 115, 255), 25, true));
     }//GEN-LAST:event_commentButtonMouseExited
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
         // TODO add your handling code here:
-        new HomeView().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_backButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -253,12 +254,12 @@ public class PostDetailView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel backButton;
     private TugasBesar.Kelompok4.Sosmed.Componenets.CardPanel cardPanel1;
     private javax.swing.JPanel commentButton;
     private javax.swing.JTextArea commentField;
     private javax.swing.JPanel commentPanel;
     private javax.swing.JPanel createComment;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

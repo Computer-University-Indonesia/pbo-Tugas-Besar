@@ -5,6 +5,7 @@
  */
 package TugasBesar.Kelompok4.Sosmed.Models;
 
+import TugasBesar.Kelompok4.Sosmed.Constants.Authentication;
 import java.time.LocalDate;
 import java.util.Stack;
 
@@ -49,6 +50,12 @@ public class PostModel extends Model {
                         + "WHERE posts.id='"+id+"'");
 
     }
+     
+    public Stack getMyPost(){
+        return super.getDatabase().getAllUseQuery("SELECT users.name AS name,title,description,created_at,posts.id "
+                + "as post_id,like_count,users.id AS user_id FROM posts JOIN users ON posts.user_id = users.id "
+                + "WHERE user_id = " + Authentication.getId() + " ORDER BY post_id DESC");
+    };
 
     @Override
     public void delete(String where) {

@@ -84,6 +84,10 @@ public class CardPanel extends javax.swing.JPanel {
         TXTLike = new javax.swing.JLabel();
         detailButton = new javax.swing.JPanel();
         detailText = new javax.swing.JLabel();
+        editButton = new javax.swing.JPanel();
+        detailText2 = new javax.swing.JLabel();
+        deleteButton = new javax.swing.JPanel();
+        detailText1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1440, 284));
@@ -175,6 +179,78 @@ public class CardPanel extends javax.swing.JPanel {
 
         backgorundPanel.add(detailButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 205, -1, -1));
 
+        editButton.setBackground(new java.awt.Color(241, 241, 241));
+        editButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(243, 156, 18), 25, true));
+        editButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editButtonMouseExited(evt);
+            }
+        });
+        editButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        detailText2.setBackground(new java.awt.Color(241, 241, 241));
+        detailText2.setForeground(new java.awt.Color(255, 255, 255));
+        detailText2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        detailText2.setText("Edit");
+        detailText2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        detailText2.setPreferredSize(new java.awt.Dimension(40, 30));
+        detailText2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                detailText2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                detailText2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                detailText2MouseExited(evt);
+            }
+        });
+        editButton.add(detailText2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, -1));
+
+        backgorundPanel.add(editButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 35, -1, -1));
+
+        deleteButton.setBackground(new java.awt.Color(241, 241, 241));
+        deleteButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 63, 52), 25, true));
+        deleteButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                deleteButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                deleteButtonMouseExited(evt);
+            }
+        });
+        deleteButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        detailText1.setBackground(new java.awt.Color(241, 241, 241));
+        detailText1.setForeground(new java.awt.Color(255, 255, 255));
+        detailText1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        detailText1.setText("Delete");
+        detailText1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        detailText1.setPreferredSize(new java.awt.Dimension(40, 30));
+        detailText1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                detailText1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                detailText1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                detailText1MouseExited(evt);
+            }
+        });
+        deleteButton.add(detailText1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, -1));
+
+        backgorundPanel.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 35, -1, -1));
+
         add(backgorundPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -224,6 +300,58 @@ public class CardPanel extends javax.swing.JPanel {
         detail.setVisible(true);
     }//GEN-LAST:event_detailTextMouseClicked
 
+    private void detailText1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailText1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_detailText1MouseClicked
+
+    private void detailText1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailText1MouseEntered
+        // TODO add your handling code here:
+        deleteButton.setBorder(new LineBorder(new Color(245,53,42), 25, true));
+    }//GEN-LAST:event_detailText1MouseEntered
+
+    private void detailText1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailText1MouseExited
+        // TODO add your handling code here:
+        deleteButton.setBorder(new LineBorder(new Color(255,63,52), 25, true));
+    }//GEN-LAST:event_detailText1MouseExited
+
+    private void deleteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteButtonMouseClicked
+
+    private void deleteButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteButtonMouseEntered
+
+    private void deleteButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteButtonMouseExited
+
+    private void detailText2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailText2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_detailText2MouseClicked
+
+    private void detailText2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailText2MouseEntered
+        // TODO add your handling code here:
+        editButton.setBorder(new LineBorder(new Color(233,146,8), 25, true));
+    }//GEN-LAST:event_detailText2MouseEntered
+
+    private void detailText2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailText2MouseExited
+        // TODO add your handling code here:
+        editButton.setBorder(new LineBorder(new Color(243,156,18), 25, true));
+    }//GEN-LAST:event_detailText2MouseExited
+
+    private void editButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editButtonMouseClicked
+
+    private void editButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editButtonMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editButtonMouseEntered
+
+    private void editButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editButtonMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editButtonMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TXTDate;
@@ -232,8 +360,12 @@ public class CardPanel extends javax.swing.JPanel {
     private javax.swing.JLabel TXTName;
     private javax.swing.JLabel TXTTittle;
     private javax.swing.JPanel backgorundPanel;
+    private javax.swing.JPanel deleteButton;
     private javax.swing.JPanel detailButton;
     private javax.swing.JLabel detailText;
+    private javax.swing.JLabel detailText1;
+    private javax.swing.JLabel detailText2;
+    private javax.swing.JPanel editButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToggleButton likeButton;
     // End of variables declaration//GEN-END:variables

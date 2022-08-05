@@ -5,8 +5,13 @@
  */
 package TugasBesar.Kelompok4.Sosmed.Views;
 
+import TugasBesar.Kelompok4.Sosmed.Componenets.CardPanel;
 import TugasBesar.Kelompok4.Sosmed.Constants.Authentication;
 import TugasBesar.Kelompok4.Sosmed.Controllers.PostController;
+import java.awt.Color;
+import java.util.Stack;
+import javax.swing.BoxLayout;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -17,6 +22,8 @@ public class ProfileView extends javax.swing.JFrame {
     /**
      * Creates new form ProfileView
      */
+    PostController controller = new PostController();
+    
     public ProfileView() {
         initComponents();
         this.setResizable(false);
@@ -24,6 +31,8 @@ public class ProfileView extends javax.swing.JFrame {
         profileButton.setText("Profile");
         profileButton.isAtctive(true);
         nama.setText(Authentication.getName());
+        username.setText(Authentication.getUsername());
+        loadPost();
     }
 
     /**
@@ -40,9 +49,13 @@ public class ProfileView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         profileButton = new TugasBesar.Kelompok4.Sosmed.Componenets.CardDashboardLabel();
         homeButton = new TugasBesar.Kelompok4.Sosmed.Componenets.CardDashboardLabel();
+        logoutButton = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         nama = new javax.swing.JLabel();
+        username = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel6 = new javax.swing.JPanel();
 
@@ -78,6 +91,34 @@ public class ProfileView extends javax.swing.JFrame {
         });
         jPanel3.add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, -1, -1));
 
+        logoutButton.setBackground(new java.awt.Color(21, 115, 255));
+        logoutButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 25, true));
+        logoutButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TugasBesar/Kelompok4/Sosmed/Assets/logout.png"))); // NOI18N
+        logoutButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 4, -1, -1));
+
+        jLabel4.setBackground(new java.awt.Color(21, 115, 255));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(21, 115, 255));
+        jLabel4.setText("  Logout");
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.setPreferredSize(new java.awt.Dimension(150, 40));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel4MouseExited(evt);
+            }
+        });
+        logoutButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel3.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 30, -1, -1));
+
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -92,8 +133,14 @@ public class ProfileView extends javax.swing.JFrame {
         nama.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         nama.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nama.setText("Nama");
-        nama.setPreferredSize(new java.awt.Dimension(440, 100));
+        nama.setPreferredSize(new java.awt.Dimension(440, 60));
         jPanel4.add(nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        username.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        username.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        username.setText("Username");
+        username.setPreferredSize(new java.awt.Dimension(440, 40));
+        jPanel4.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, -1));
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, -1, -1));
 
@@ -127,6 +174,20 @@ public class ProfileView extends javax.swing.JFrame {
         this.setVisible(false);
         new HomeView().setVisible(true);
     }//GEN-LAST:event_homeButtonMouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
+        // TODO add your handling code here:
+        logoutButton.setBorder(new LineBorder(new Color(230, 230, 230), 25, true));
+    }//GEN-LAST:event_jLabel4MouseEntered
+
+    private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
+        // TODO add your handling code here:
+        logoutButton.setBorder(new LineBorder(new Color(255, 255, 255), 25, true));
+    }//GEN-LAST:event_jLabel4MouseExited
 
     /**
      * @param args the command line arguments
@@ -162,17 +223,40 @@ public class ProfileView extends javax.swing.JFrame {
             }
         });
     }
+    public void loadPost() {
+        Stack<Stack> data = controller.getMyPost();
+        jPanel6.setLayout(new BoxLayout(jPanel6, BoxLayout.Y_AXIS));
+
+        jPanel6.removeAll();
+        jPanel6.revalidate();
+        for (Stack<String> row : data) {
+            CardPanel card = new CardPanel();
+            card.setId(row.get(4));
+            card.setName(row.get(0));
+            card.setTitle(row.get(1));
+            card.setDesc(row.get(2));
+            card.setDate(row.get(3));
+            card.setLikeCount(row.get(5));
+
+            jPanel6.add(card);
+        }
+//        jPanel6.revalidate();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private TugasBesar.Kelompok4.Sosmed.Componenets.CardDashboardLabel homeButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel logoutButton;
     private javax.swing.JLabel nama;
     private TugasBesar.Kelompok4.Sosmed.Componenets.CardDashboardLabel profileButton;
+    private javax.swing.JLabel username;
     // End of variables declaration//GEN-END:variables
 }
