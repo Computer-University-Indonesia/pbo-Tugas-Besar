@@ -155,7 +155,7 @@ public class Database {
     }
 
     public Boolean delete(String where) {
-        return this.ExecuteUpdate("DELETE FROM" + table + " WHERE " + where);
+        return this.ExecuteUpdate("DELETE FROM " + table + " WHERE " + where);
     }
 
     public Stack getAllUseQuery(String query) {

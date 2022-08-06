@@ -11,6 +11,7 @@ import TugasBesar.Kelompok4.Sosmed.Controllers.PostController;
 import java.awt.Color;
 import java.util.Stack;
 import javax.swing.BoxLayout;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
 /**
@@ -54,8 +55,11 @@ public class PostManagement extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel7 = new javax.swing.JPanel();
+        RefreshButton = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -151,7 +155,52 @@ public class PostManagement extends javax.swing.JFrame {
         jPanel7.setLayout(new javax.swing.BoxLayout(jPanel7, javax.swing.BoxLayout.LINE_AXIS));
         jScrollPane1.setViewportView(jPanel7);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1470, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 1470, 500));
+
+        RefreshButton.setBackground(new java.awt.Color(255, 255, 255));
+        RefreshButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        RefreshButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RefreshButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                RefreshButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                RefreshButtonMouseExited(evt);
+            }
+        });
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TugasBesar/Kelompok4/Sosmed/Assets/loading (1).png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout RefreshButtonLayout = new javax.swing.GroupLayout(RefreshButton);
+        RefreshButton.setLayout(RefreshButtonLayout);
+        RefreshButtonLayout.setHorizontalGroup(
+            RefreshButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 46, Short.MAX_VALUE)
+            .addGroup(RefreshButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(RefreshButtonLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        RefreshButtonLayout.setVerticalGroup(
+            RefreshButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 36, Short.MAX_VALUE)
+            .addGroup(RefreshButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(RefreshButtonLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        getContentPane().add(RefreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1370, 195, 50, 40));
 
         pack();
         setLocationRelativeTo(null);
@@ -180,13 +229,36 @@ public class PostManagement extends javax.swing.JFrame {
         // TODO add your handling code here:
         logoutButton.setBorder(new LineBorder(new Color(255, 255, 255), 25, true));
     }//GEN-LAST:event_jLabel9MouseExited
+
+    private void RefreshButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefreshButtonMouseEntered
+        // TODO add your handling code here:
+        RefreshButton.setBackground(new Color(235,235,235));
+        
+    }//GEN-LAST:event_RefreshButtonMouseEntered
+
+    private void RefreshButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefreshButtonMouseExited
+        // TODO add your handling code here:
+        RefreshButton.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_RefreshButtonMouseExited
+
+    private void RefreshButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefreshButtonMouseClicked
+       loadPost();
+        
+
+    }//GEN-LAST:event_RefreshButtonMouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    loadPost();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel2MouseClicked
     public void loadPost() {
         Stack<Stack> panggil = controller.get();
-        System.out.println(panggil);
 //        for data in panggil;
         jPanel7.setLayout(new BoxLayout(jPanel7, BoxLayout.Y_AXIS));
+                jPanel7.removeAll();
+        jPanel7.revalidate();
+
         for (Stack<String> data : panggil) {
-            System.out.println(data);
             CardPanel card = new CardPanel();
             card.setName(data.get(0));
             card.setTitle(data.get(1));
@@ -198,6 +270,7 @@ public class PostManagement extends javax.swing.JFrame {
             jPanel7.add(card);
 
         }
+        jPanel7.revalidate();
     }
 
     /**
@@ -237,7 +310,9 @@ public class PostManagement extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel RefreshButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

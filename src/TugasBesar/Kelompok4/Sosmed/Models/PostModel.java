@@ -59,7 +59,9 @@ public class PostModel extends Model {
 
     @Override
     public void delete(String where) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         //To change body of generated methods, choose Tools | Templates.
+         super.getDatabase().delete(where);
+         
     }
 
 }

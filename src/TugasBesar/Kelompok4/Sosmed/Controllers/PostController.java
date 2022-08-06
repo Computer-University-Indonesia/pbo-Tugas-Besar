@@ -27,6 +27,7 @@ public class PostController {
             Isi.push("Data ini kosong");
             Isi.push("");
             Isi.push("");
+            Isi.push("");
 
             Data.push(Isi);
         }
@@ -76,5 +77,8 @@ public class PostController {
         }else{
             JOptionPane.showMessageDialog(null, "Title / Description tidak boleh Kosong");
         }
+    }
+    public void DeletePost(String id){
+        model.delete("id="+id);
     }
 }

@@ -357,6 +357,8 @@ deleteButton.setVisible(true);
 
     private void detailText1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailText1MouseClicked
         // TODO add your handling code here:
+        mode.DeletePost(id);
+        
     }//GEN-LAST:event_detailText1MouseClicked
 
     private void detailText1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailText1MouseEntered
