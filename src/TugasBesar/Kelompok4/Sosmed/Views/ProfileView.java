@@ -7,6 +7,7 @@ package TugasBesar.Kelompok4.Sosmed.Views;
 
 import TugasBesar.Kelompok4.Sosmed.Componenets.CardPanel;
 import TugasBesar.Kelompok4.Sosmed.Constants.Authentication;
+import TugasBesar.Kelompok4.Sosmed.Controllers.AuthController;
 import TugasBesar.Kelompok4.Sosmed.Controllers.PostController;
 import java.awt.Color;
 import java.util.Stack;
@@ -23,7 +24,8 @@ public class ProfileView extends javax.swing.JFrame {
      * Creates new form ProfileView
      */
     PostController controller = new PostController();
-    
+    AuthController authController = new AuthController();
+
     public ProfileView() {
         initComponents();
         this.setResizable(false);
@@ -177,6 +179,9 @@ public class ProfileView extends javax.swing.JFrame {
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         // TODO add your handling code here:
+        authController.logout();
+        new LoginView().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
@@ -223,6 +228,7 @@ public class ProfileView extends javax.swing.JFrame {
             }
         });
     }
+
     public void loadPost() {
         Stack<Stack> data = controller.getMyPost();
         jPanel6.setLayout(new BoxLayout(jPanel6, BoxLayout.Y_AXIS));

@@ -10,6 +10,7 @@ import TugasBesar.Kelompok4.Sosmed.Views.PostDetailView;
 import java.awt.Color;
 import java.util.Stack;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 /**
@@ -28,6 +29,9 @@ public class CardPanel extends javax.swing.JPanel {
 
     public CardPanel() {
         initComponents();
+        editButton.setVisible(false);
+        deleteButton.setVisible(false);
+        SaveButton.setVisible(false);
 
     }
 
@@ -65,6 +69,12 @@ public class CardPanel extends javax.swing.JPanel {
         this.TXTLike.setText(text);
     }
 
+    public void showEditAndDeleteButton() {
+editButton.setVisible(true);
+deleteButton.setVisible(true);
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,7 +85,7 @@ public class CardPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         backgorundPanel = new javax.swing.JPanel();
-        TXTTittle = new javax.swing.JLabel();
+        TXTTittle = new javax.swing.JTextField();
         TXTDate = new javax.swing.JLabel();
         TXTName = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -84,6 +94,8 @@ public class CardPanel extends javax.swing.JPanel {
         TXTLike = new javax.swing.JLabel();
         detailButton = new javax.swing.JPanel();
         detailText = new javax.swing.JLabel();
+        SaveButton = new javax.swing.JPanel();
+        SaveText = new javax.swing.JLabel();
         editButton = new javax.swing.JPanel();
         detailText2 = new javax.swing.JLabel();
         deleteButton = new javax.swing.JPanel();
@@ -103,9 +115,16 @@ public class CardPanel extends javax.swing.JPanel {
         });
         backgorundPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        TXTTittle.setEditable(false);
         TXTTittle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         TXTTittle.setText("Title");
+        TXTTittle.setBorder(null);
         TXTTittle.setPreferredSize(new java.awt.Dimension(400, 30));
+        TXTTittle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TXTTittleActionPerformed(evt);
+            }
+        });
         backgorundPanel.add(TXTTittle, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
         TXTDate.setText("Date");
@@ -128,7 +147,7 @@ public class CardPanel extends javax.swing.JPanel {
 
         backgorundPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
-        likeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TugasBesar/Kelompok4/Sosmed/Componenets/heart.png"))); // NOI18N
+        likeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TugasBesar/Kelompok4/Sosmed/Assets/heart.png"))); // NOI18N
         likeButton.setPreferredSize(new java.awt.Dimension(50, 30));
         likeButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -178,6 +197,42 @@ public class CardPanel extends javax.swing.JPanel {
         detailButton.add(detailText, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, -1));
 
         backgorundPanel.add(detailButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 205, -1, -1));
+
+        SaveButton.setBackground(new java.awt.Color(241, 241, 241));
+        SaveButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 255), 25, true));
+        SaveButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SaveButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                SaveButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                SaveButtonMouseExited(evt);
+            }
+        });
+        SaveButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        SaveText.setBackground(new java.awt.Color(241, 241, 241));
+        SaveText.setForeground(new java.awt.Color(255, 255, 255));
+        SaveText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        SaveText.setText("Save");
+        SaveText.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SaveText.setPreferredSize(new java.awt.Dimension(40, 30));
+        SaveText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SaveTextMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                SaveTextMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                SaveTextMouseExited(evt);
+            }
+        });
+        SaveButton.add(SaveText, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, -1));
+
+        backgorundPanel.add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 35, -1, -1));
 
         editButton.setBackground(new java.awt.Color(241, 241, 241));
         editButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(243, 156, 18), 25, true));
@@ -306,12 +361,12 @@ public class CardPanel extends javax.swing.JPanel {
 
     private void detailText1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailText1MouseEntered
         // TODO add your handling code here:
-        deleteButton.setBorder(new LineBorder(new Color(245,53,42), 25, true));
+        deleteButton.setBorder(new LineBorder(new Color(245, 53, 42), 25, true));
     }//GEN-LAST:event_detailText1MouseEntered
 
     private void detailText1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailText1MouseExited
         // TODO add your handling code here:
-        deleteButton.setBorder(new LineBorder(new Color(255,63,52), 25, true));
+        deleteButton.setBorder(new LineBorder(new Color(255, 63, 52), 25, true));
     }//GEN-LAST:event_detailText1MouseExited
 
     private void deleteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseClicked
@@ -328,16 +383,20 @@ public class CardPanel extends javax.swing.JPanel {
 
     private void detailText2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailText2MouseClicked
         // TODO add your handling code here:
+        TXTTittle.setEditable(true);
+        TXTDesc.setEditable(true);
+        SaveButton.setVisible(true);
+        editButton.setVisible(false);
     }//GEN-LAST:event_detailText2MouseClicked
 
     private void detailText2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailText2MouseEntered
         // TODO add your handling code here:
-        editButton.setBorder(new LineBorder(new Color(233,146,8), 25, true));
+        editButton.setBorder(new LineBorder(new Color(233, 146, 8), 25, true));
     }//GEN-LAST:event_detailText2MouseEntered
 
     private void detailText2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailText2MouseExited
         // TODO add your handling code here:
-        editButton.setBorder(new LineBorder(new Color(243,156,18), 25, true));
+        editButton.setBorder(new LineBorder(new Color(243, 156, 18), 25, true));
     }//GEN-LAST:event_detailText2MouseExited
 
     private void editButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editButtonMouseClicked
@@ -352,13 +411,50 @@ public class CardPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_editButtonMouseExited
 
+    private void TXTTittleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTTittleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TXTTittleActionPerformed
+
+    private void SaveTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveTextMouseClicked
+        // TODO add your handling code here:
+        String[] inputs = {TXTName.getText(),TXTDesc.getText(),id};
+        
+        mode.update(inputs);
+        TXTDesc.setEditable(false);
+        TXTTittle.setEditable(false);
+        SaveButton.setVisible(false);
+        editButton.setVisible(true);
+    }//GEN-LAST:event_SaveTextMouseClicked
+
+    private void SaveTextMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveTextMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SaveTextMouseEntered
+
+    private void SaveTextMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveTextMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SaveTextMouseExited
+
+    private void SaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SaveButtonMouseClicked
+
+    private void SaveButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveButtonMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SaveButtonMouseEntered
+
+    private void SaveButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveButtonMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SaveButtonMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel SaveButton;
+    private javax.swing.JLabel SaveText;
     private javax.swing.JLabel TXTDate;
     private javax.swing.JTextArea TXTDesc;
     private javax.swing.JLabel TXTLike;
     private javax.swing.JLabel TXTName;
-    private javax.swing.JLabel TXTTittle;
+    private javax.swing.JTextField TXTTittle;
     private javax.swing.JPanel backgorundPanel;
     private javax.swing.JPanel deleteButton;
     private javax.swing.JPanel detailButton;

@@ -68,4 +68,13 @@ public class PostController {
         }
         model.update("like_count='"+PlusLike+"'","id='"+PostID+"'");
     }
+    public void update(String[] inputs){
+        if(inputs[0].length() !=0 || inputs[1].length()!=0){
+            
+        model.update("title='"+inputs[0]+"',description='"+inputs[1]+"'", "id='"+inputs[2]+"'");
+        JOptionPane.showMessageDialog(null, "Post Updated");
+        }else{
+            JOptionPane.showMessageDialog(null, "Title / Description tidak boleh Kosong");
+        }
+    }
 }

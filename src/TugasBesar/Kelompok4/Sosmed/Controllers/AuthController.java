@@ -69,4 +69,10 @@ public class AuthController {
         }
         return true;
     }
+    public void logout(){
+        Authentication.setId("");
+        Authentication.setName("");
+        Authentication.setRole("");
+        Authentication.setUsername("");
+    }
 }
