@@ -7,11 +7,14 @@ package TugasBesar.Kelompok4.Sosmed.Configs;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.*;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,8 +22,7 @@ import java.sql.SQLException;
  */
 public class Database {
 
-    private Connection sqlConnection;
-    protected Statement sqlStatement;
+    private static Connection sqlConnection;
     protected String table;
 
     public void setTable(String table) {
@@ -28,135 +30,137 @@ public class Database {
     }
 //    create connection
 
-    public Database() {
+    public Connection getConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            this.sqlConnection = DriverManager.getConnection("jdbc:mysql://localhost/sosmed", "root", "");
-            this.sqlStatement = this.sqlConnection.createStatement();
+            Database.sqlConnection = DriverManager.getConnection("jdbc:mysql://localhost/sosmed", "root", "");
             System.out.println("[Database] connected to Database sosmed");
         } catch (SQLException e) {
             System.out.println("Sql Exception : " + e.getMessage());
         } catch (Exception e) {
             System.out.println("Connection error : " + e.getMessage());
         }
+        return Database.sqlConnection;
     }
-
-    public Stack GetAll() {
-        Stack<Stack> result = new Stack<>();
+    public void closeConnection(){
+        
         try {
-            ResultSet resultSql = this.sqlStatement.executeQuery("SELECT * FROM " + this.table);
+            Database.sqlConnection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public Stack ExecuteQuery(String query) {
+        Stack<Stack> result = new Stack<>();
+        Statement statement = null;
+        try {
+            Database.sqlConnection.setAutoCommit(false);
+            statement = Database.sqlConnection.createStatement();
+            ResultSet resultSql = statement.executeQuery(query);
+            Database.sqlConnection.commit();
             ResultSetMetaData meta = resultSql.getMetaData();
             while (resultSql.next()) {
                 Stack<String> collumns = new Stack<>();
                 for (int i = 1; i <= meta.getColumnCount(); i++) {
-                    String name = meta.getColumnName(i);
+                    String name = meta.getColumnLabel(i);
                     collumns.push(resultSql.getString(name));
                 }
                 result.push(collumns);
             }
+            System.out.println("Success : [DATABASE] " + query);
+
         } catch (SQLException e) {
-            System.out.println("Sql Exception Get All : " + e.getMessage());
-        } catch (Exception e) {
+            try {
+                Database.sqlConnection.rollback();
+            } catch (SQLException ex) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            System.out.println("Sql Exception Get : " + e.getMessage());
+        }catch(NullPointerException e){
+            e.getStackTrace();
+            System.out.println(e.getMessage());
+        }
+        catch (Exception e) {
             System.out.println("GetAll Method Error : " + e.getMessage());
-        }
-        return result;
-    }
+        } finally {
+            try {
+                Database.sqlConnection.setAutoCommit(true);
+                if (statement != null) {
 
-    public Stack GetDetail(String where) {
-        Stack<Stack> result = new Stack<>();
-        try {
-            String sql = "SELECT * FROM " + this.table + " WHERE " + where;
-            ResultSet resultSql = this.sqlStatement.executeQuery(sql);
-            ResultSetMetaData meta = resultSql.getMetaData();
-            while (resultSql.next()) {
-                Stack<String> collumns = new Stack<>();
-                for (int i = 1; i <= meta.getColumnCount(); i++) {
-                    String name = meta.getColumnName(i);
-                    collumns.push(resultSql.getString(name));
+                    statement.close();
                 }
-                result.push(collumns);
+            } catch (SQLException ex) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             }
-            System.out.println("Success : [Database] " + sql);
-
-            return result;
-        } catch (SQLException e) {
-            System.out.println("SQL Exception : " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Get Detail : " + e.getMessage());
         }
         return result;
     }
 
-    public Boolean create(String fields, String[] values) {
+    public Boolean ExecuteUpdate(String query) {
+        PreparedStatement statement = null;
         try {
-            String valueSql = "";
-            for (String value : values) {
-                valueSql += "'" + value + "' ,";
-            }
-            StringBuffer valueSqlRemoved = new StringBuffer(valueSql);
-            valueSqlRemoved.deleteCharAt(valueSql.length() - 1);
-
-            int isCreated = this.sqlStatement.executeUpdate("INSERT INTO " + this.table + "(" + fields + ") VALUES(" + valueSqlRemoved + ")");
-            if (isCreated <= 0) {
-                return false;
-            }
+            sqlConnection.setAutoCommit(false);
+            statement = sqlConnection.prepareStatement(query);
+            statement.executeUpdate();
+            sqlConnection.commit();
+            return true;
         } catch (SQLException e) {
             System.out.println("SQL Exxception : " + e.getMessage());
         } catch (Exception e) {
             System.out.println("Create Method : " + e.getMessage());
+        } finally {
+            try {
+                sqlConnection.setAutoCommit(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("sql Exceition : " + ex.getMessage());
+                }
+            }
         }
-        return true;
+        return false;
+    }
+
+    public Stack GetAll() {
+
+        return this.ExecuteQuery("SELECT * FROM " + this.table);
+    }
+
+    public Stack GetDetail(String where) {
+        return this.ExecuteQuery("SELECT * FROM " + this.table + " WHERE " + where);
+    }
+
+    public Boolean create(String fields, String[] values) {
+
+        String valueSql = "";
+        for (String value : values) {
+            valueSql += "'" + value + "' ,";
+        }
+        StringBuffer valueSqlRemoved = new StringBuffer(valueSql);
+        valueSqlRemoved.deleteCharAt(valueSql.length() - 1);
+        String sql = "INSERT INTO " + this.table + "(" + fields + ") VALUES(" + valueSqlRemoved + ")";
+        return this.ExecuteUpdate(sql);
 
     }
 
     public Boolean update(String set, String where) {
-        try {
-            int isCreated = this.sqlStatement.executeUpdate("UPDATE " + table + " SET " + set + " WHERE " + where);
-            if (isCreated <= 0) {
-                return false;
-            }
-        } catch (SQLException e) {
-            System.out.println("SQL Exxception : " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Create Method : " + e.getMessage());
-        }
-        return true;
+        String sql = "UPDATE " + table + " SET " + set + " WHERE " + where;
+        return this.ExecuteUpdate(sql);
     }
 
     public Boolean delete(String where) {
-        try {
-            int isCreated = this.sqlStatement.executeUpdate("DELETE FROM" + table + " WHERE " + where);
-            if (isCreated <= 0) {
-                return false;
-            }
-        } catch (SQLException e) {
-            System.out.println("SQL Exxception : " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Create Method : " + e.getMessage());
-        }
-        return true;
+        return this.ExecuteUpdate("DELETE FROM" + table + " WHERE " + where);
     }
 
-    public Stack getAllUseQuery(String query){
-         Stack<Stack> result = new Stack<>();
-        try {
-            ResultSet resultSql = this.sqlStatement.executeQuery(query);
-            ResultSetMetaData meta = resultSql.getMetaData();
-            while (resultSql.next()) {
-                Stack<String> collumn = new Stack<>();
-                for (int i = 1; i <= meta.getColumnCount(); i++) {
-                    String name = meta.getColumnLabel(i);
-//                    System.out.println(meta.getColumnLabel(i));
-                    collumn.push(resultSql.getString(name));
-                }
-                result.push(collumn);
-            }
-        } catch (SQLException e) {
-            System.out.println("Sql Exception Get All Join: " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("GetAll Method Error : " + e.getMessage());
-        }
-        return result;
+    public Stack getAllUseQuery(String query) {
+
+        return this.ExecuteQuery(query);
+
     }
 }

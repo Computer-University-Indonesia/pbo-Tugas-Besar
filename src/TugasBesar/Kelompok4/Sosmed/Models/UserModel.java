@@ -35,7 +35,6 @@ public class UserModel  extends Model{
     }
     @Override
     public void create(String[] values) {
-//        {"AS","ASD","PASSWORD"}
         super.getDatabase().create("name,username,password,role_id", values);
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -43,7 +42,6 @@ public class UserModel  extends Model{
     @Override
     public void update(String set, String where) {
         super.getDatabase().update(set, where);
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
