@@ -55,6 +55,7 @@ public class HomeView extends javax.swing.JFrame {
         logoutButton = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel6 = new javax.swing.JPanel();
@@ -70,7 +71,6 @@ public class HomeView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1440, 1024));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -84,8 +84,8 @@ public class HomeView extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("FSociety");
-        jLabel1.setPreferredSize(new java.awt.Dimension(200, 100));
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, -1));
+        jLabel1.setPreferredSize(new java.awt.Dimension(200, 64));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 16, -1, -1));
 
         profileButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -107,7 +107,6 @@ public class HomeView extends javax.swing.JFrame {
         logoutButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TugasBesar/Kelompok4/Sosmed/Assets/logout.png"))); // NOI18N
-        jLabel3.setPreferredSize(new java.awt.Dimension(32, 32));
         logoutButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 4, -1, -1));
 
         jLabel4.setBackground(new java.awt.Color(21, 115, 255));
@@ -130,6 +129,10 @@ public class HomeView extends javax.swing.JFrame {
         logoutButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel3.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 30, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TugasBesar/Kelompok4/Sosmed/Assets/logo64.png"))); // NOI18N
+        jLabel5.setPreferredSize(new java.awt.Dimension(64, 64));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 16, -1, -1));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -382,6 +385,7 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

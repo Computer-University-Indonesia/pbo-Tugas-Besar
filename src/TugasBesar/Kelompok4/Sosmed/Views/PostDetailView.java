@@ -216,6 +216,8 @@ public class PostDetailView extends javax.swing.JFrame {
 
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
         // TODO add your handling code here:
+        new HomeView().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_backButtonMouseClicked
 
     /**

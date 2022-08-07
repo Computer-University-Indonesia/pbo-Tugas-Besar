@@ -55,6 +55,7 @@ public class LoginView extends javax.swing.JFrame {
         registerLabel = new javax.swing.JLabel();
         register = new javax.swing.JLabel();
         copyright = new javax.swing.JLabel();
+        aboutUs = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 800));
@@ -141,7 +142,14 @@ public class LoginView extends javax.swing.JFrame {
         copyright.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         copyright.setText("Copyright (c) 2022, FSociety");
         copyright.setPreferredSize(new java.awt.Dimension(300, 30));
-        mainPanel.add(copyright, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 620, -1, -1));
+        mainPanel.add(copyright, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 590, -1, -1));
+
+        aboutUs.setForeground(new java.awt.Color(21, 115, 255));
+        aboutUs.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        aboutUs.setText("About Us");
+        aboutUs.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        aboutUs.setPreferredSize(new java.awt.Dimension(300, 30));
+        mainPanel.add(aboutUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 620, -1, -1));
 
         backgroundPanel.add(mainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
@@ -216,6 +224,7 @@ public class LoginView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title;
+    private javax.swing.JLabel aboutUs;
     private javax.swing.JPanel backgroundPanel;
     private javax.swing.JLabel copyright;
     private javax.swing.JLabel forgetPassword;
