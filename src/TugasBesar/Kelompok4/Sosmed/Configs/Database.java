@@ -34,7 +34,7 @@ public class Database {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            Database.sqlConnection = DriverManager.getConnection("jdbc:mysql://localhost/sosmed", "root", "");
+            Database.sqlConnection = DriverManager.getConnection("jdbc:mysql://mysql-84931-0.cloudclusters.net:17020/sosmed", "admin", "HKZpzPnX");
             System.out.println("[Database] connected to Database sosmed");
         } catch (SQLException e) {
             System.out.println("Sql Exception : " + e.getMessage());
