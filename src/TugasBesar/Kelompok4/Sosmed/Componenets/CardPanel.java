@@ -41,7 +41,8 @@ public class CardPanel extends javax.swing.JPanel {
         detailButton.setEnabled(false);
 
     }
-    public void hideLikeButton(){
+
+    public void hideLikeButton() {
         likeButton.setVisible(false);
     }
 
@@ -74,8 +75,8 @@ public class CardPanel extends javax.swing.JPanel {
     }
 
     public void showEditAndDeleteButton() {
-editButton.setVisible(true);
-deleteButton.setVisible(true);
+        editButton.setVisible(true);
+        deleteButton.setVisible(true);
 
     }
 
@@ -362,7 +363,7 @@ deleteButton.setVisible(true);
     private void detailText1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailText1MouseClicked
         // TODO add your handling code here:
         mode.DeletePost(id);
-        
+
     }//GEN-LAST:event_detailText1MouseClicked
 
     private void detailText1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailText1MouseEntered
@@ -423,15 +424,15 @@ deleteButton.setVisible(true);
 
     private void SaveTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveTextMouseClicked
         // TODO add your handling code here:
-        String[] inputs = {TXTName.getText(),TXTDesc.getText(),id};
-        
+        String[] inputs = {TXTName.getText(), TXTDesc.getText(), id};
+
         mode.update(inputs);
         TXTDesc.setEditable(false);
         TXTTittle.setEditable(false);
         SaveButton.setVisible(false);
         editButton.setVisible(true);
     }//GEN-LAST:event_SaveTextMouseClicked
-    
+
     private void SaveTextMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveTextMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_SaveTextMouseEntered

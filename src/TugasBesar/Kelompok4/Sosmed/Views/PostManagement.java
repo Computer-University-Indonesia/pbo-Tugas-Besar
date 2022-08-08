@@ -6,6 +6,7 @@
 package TugasBesar.Kelompok4.Sosmed.Views;
 
 import TugasBesar.Kelompok4.Sosmed.Componenets.CardPanel;
+import TugasBesar.Kelompok4.Sosmed.Constants.Posts;
 import TugasBesar.Kelompok4.Sosmed.Controllers.AuthController;
 import TugasBesar.Kelompok4.Sosmed.Controllers.PostController;
 import java.awt.Color;
@@ -18,7 +19,7 @@ import javax.swing.border.LineBorder;
  *
  * @author Muhammad Sabilil
  */
-public class PostManagement extends javax.swing.JFrame {
+public final class PostManagement extends javax.swing.JFrame {
 
     /**
      * Creates new form PostManagement
@@ -225,41 +226,42 @@ public class PostManagement extends javax.swing.JFrame {
 
     private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
         // TODO add your handling code here:
-        logoutButton.setBackground(new Color(240,240,240));
+        logoutButton.setBackground(new Color(240, 240, 240));
     }//GEN-LAST:event_jLabel9MouseEntered
 
     private void jLabel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseExited
         // TODO add your handling code here:
-        logoutButton.setBackground(new Color(255,255,255));
+        logoutButton.setBackground(new Color(255, 255, 255));
     }//GEN-LAST:event_jLabel9MouseExited
 
     private void RefreshButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefreshButtonMouseEntered
         // TODO add your handling code here:
-        RefreshButton.setBackground(new Color(235,235,235));
-        
+        RefreshButton.setBackground(new Color(235, 235, 235));
+
     }//GEN-LAST:event_RefreshButtonMouseEntered
 
     private void RefreshButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefreshButtonMouseExited
         // TODO add your handling code here:
-        RefreshButton.setBackground(new Color(255,255,255));
+        RefreshButton.setBackground(new Color(255, 255, 255));
     }//GEN-LAST:event_RefreshButtonMouseExited
 
     private void RefreshButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefreshButtonMouseClicked
-       loadPost();
-        
+        loadPost();
+
 
     }//GEN-LAST:event_RefreshButtonMouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-    loadPost();
+        loadPost();
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel2MouseClicked
     public void loadPost() {
         Stack<Stack> panggil = controller.get();
 //        for data in panggil;
         jPanel7.setLayout(new BoxLayout(jPanel7, BoxLayout.Y_AXIS));
-                jPanel7.removeAll();
+        jPanel7.removeAll();
         jPanel7.revalidate();
+        Posts.setView(this);
 
         for (Stack<String> data : panggil) {
             CardPanel card = new CardPanel();

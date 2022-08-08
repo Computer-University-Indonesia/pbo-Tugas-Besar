@@ -6,6 +6,7 @@
 package TugasBesar.Kelompok4.Sosmed.Views;
 
 import TugasBesar.Kelompok4.Sosmed.Componenets.CardComment;
+import TugasBesar.Kelompok4.Sosmed.Constants.Posts;
 import TugasBesar.Kelompok4.Sosmed.Controllers.CommentController;
 import TugasBesar.Kelompok4.Sosmed.Controllers.PostController;
 import java.awt.Color;
@@ -216,7 +217,7 @@ public class PostDetailView extends javax.swing.JFrame {
 
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
         // TODO add your handling code here:
-        new HomeView().setVisible(true);
+        Posts.getView().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backButtonMouseClicked
 
