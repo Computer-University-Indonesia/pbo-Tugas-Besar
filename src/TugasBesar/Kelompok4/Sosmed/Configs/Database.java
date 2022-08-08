@@ -24,33 +24,33 @@ public class Database {
 
     private static Connection sqlConnection;
     protected String table;
+    private final String[] databaseProduction = {"jdbc:mysql://mysql-84931-0.cloudclusters.net:17020/sosmed", "admin", "HKZpzPnX"};
+    private final String[] databaseStaging = {"jdbc:mysql://localhost/sosmed", "root", ""};
+    public static String env;
 
     public void setTable(String table) {
         this.table = table;
     }
 //    create connection
 
-    public Connection getConnection() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-
-            Database.sqlConnection = DriverManager.getConnection("jdbc:mysql://mysql-84931-0.cloudclusters.net:17020/sosmed", "admin", "HKZpzPnX");
-            System.out.println("[Database] connected to Database sosmed");
-        } catch (SQLException e) {
-            System.out.println("Sql Exception : " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Connection error : " + e.getMessage());
-        }
+    public Connection getConnection() throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.jdbc.Driver");
+        String[] url = databaseProduction;
+    
+        Database.sqlConnection = DriverManager.getConnection(url[0],url[1],url[2]);
+        System.out.println("[Database] connected to Database sosmed");
         return Database.sqlConnection;
     }
-    public void closeConnection(){
-        
+
+    public void closeConnection() {
+
         try {
             Database.sqlConnection.close();
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     public Stack ExecuteQuery(String query) {
         Stack<Stack> result = new Stack<>();
         Statement statement = null;
@@ -77,11 +77,10 @@ public class Database {
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             }
             System.out.println("Sql Exception Get : " + e.getMessage());
-        }catch(NullPointerException e){
+        } catch (NullPointerException e) {
             e.getStackTrace();
             System.out.println(e.getMessage());
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("GetAll Method Error : " + e.getMessage());
         } finally {
             try {
