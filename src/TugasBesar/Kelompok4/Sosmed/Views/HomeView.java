@@ -349,6 +349,10 @@ public class HomeView extends javax.swing.JFrame {
             card.setDesc(row.get(2));
             card.setDate(row.get(3));
             card.setLikeCount(row.get(5));
+            if(data.get(0).empty()){
+            card.hideLikeButton();
+            card.hideButton();
+            }
 
             jPanel6.add(card);
         }

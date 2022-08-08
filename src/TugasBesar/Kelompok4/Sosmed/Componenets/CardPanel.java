@@ -41,6 +41,9 @@ public class CardPanel extends javax.swing.JPanel {
         detailButton.setEnabled(false);
 
     }
+    public void hideLikeButton(){
+        likeButton.setVisible(false);
+    }
 
     public String getId() {
         return id;
@@ -428,7 +431,7 @@ deleteButton.setVisible(true);
         SaveButton.setVisible(false);
         editButton.setVisible(true);
     }//GEN-LAST:event_SaveTextMouseClicked
-
+    
     private void SaveTextMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveTextMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_SaveTextMouseEntered
