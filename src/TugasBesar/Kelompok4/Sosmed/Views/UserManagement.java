@@ -26,6 +26,7 @@ public class UserManagement extends javax.swing.JFrame {
     AuthController authController = new AuthController();
     public UserManagement() {
         initComponents();
+        this.setResizable(false);
         Stack<Stack> simpan = user.Get();
         System.out.println(simpan);
 //        jTable1.getModel()
@@ -34,7 +35,6 @@ DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 int no = 0;
 for (Stack<String> data : simpan){
     no+=1;
-    System.out.println(data);
 model.addRow(new Object[]{no, data.get(1), data.get(3), data.get(2)});
 }
 
@@ -64,6 +64,7 @@ model.addRow(new Object[]{no, data.get(1), data.get(3), data.get(2)});
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1412, 1029));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -134,6 +135,7 @@ model.addRow(new Object[]{no, data.get(1), data.get(3), data.get(2)});
         jLabel5.setBackground(new java.awt.Color(51, 102, 255));
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setText("Post Management");
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
@@ -220,12 +222,12 @@ model.addRow(new Object[]{no, data.get(1), data.get(3), data.get(2)});
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
         // TODO add your handling code here:
-        logoutButton.setBorder(new LineBorder(new Color(230, 230, 230), 25, true));
+        logoutButton.setBackground(new Color(240,240,240));
     }//GEN-LAST:event_jLabel7MouseEntered
 
     private void jLabel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseExited
         // TODO add your handling code here:
-        logoutButton.setBorder(new LineBorder(new Color(255, 255, 255), 25, true));
+        logoutButton.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_jLabel7MouseExited
 
     /**

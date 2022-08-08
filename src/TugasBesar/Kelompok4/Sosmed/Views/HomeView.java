@@ -7,6 +7,7 @@ package TugasBesar.Kelompok4.Sosmed.Views;
 
 import TugasBesar.Kelompok4.Sosmed.Componenets.*;
 import TugasBesar.Kelompok4.Sosmed.Constants.Authentication;
+import TugasBesar.Kelompok4.Sosmed.Constants.Posts;
 import TugasBesar.Kelompok4.Sosmed.Controllers.PostController;
 import TugasBesar.Kelompok4.Sosmed.Controllers.AuthController;
 import java.awt.Color;
@@ -71,6 +72,7 @@ public class HomeView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1440, 1024));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -131,7 +133,6 @@ public class HomeView extends javax.swing.JFrame {
         jPanel3.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 30, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TugasBesar/Kelompok4/Sosmed/Assets/logo64.png"))); // NOI18N
-        jLabel5.setPreferredSize(new java.awt.Dimension(64, 64));
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 16, -1, -1));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -147,6 +148,11 @@ public class HomeView extends javax.swing.JFrame {
         jScrollPane1.setPreferredSize(new java.awt.Dimension(1440, 600));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel6MouseClicked(evt);
+            }
+        });
         jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.LINE_AXIS));
         jScrollPane1.setViewportView(jPanel6);
 
@@ -321,6 +327,10 @@ public class HomeView extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jLabel4MouseClicked
 
+    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel6MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -330,6 +340,7 @@ public class HomeView extends javax.swing.JFrame {
 
         jPanel6.removeAll();
         jPanel6.revalidate();
+        Posts.setView(this);
         for (Stack<String> row : data) {
             CardPanel card = new CardPanel();
             card.setId(row.get(4));

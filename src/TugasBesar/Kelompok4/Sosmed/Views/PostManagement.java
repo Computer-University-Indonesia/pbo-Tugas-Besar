@@ -28,6 +28,7 @@ public class PostManagement extends javax.swing.JFrame {
 
     public PostManagement() {
         initComponents();
+        this.setResizable(false);
         controller = new PostController();
         loadPost();
 //        jPanel7.revalidate();
@@ -60,6 +61,7 @@ public class PostManagement extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1470, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -71,6 +73,7 @@ public class PostManagement extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("User Management");
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
@@ -222,12 +225,12 @@ public class PostManagement extends javax.swing.JFrame {
 
     private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
         // TODO add your handling code here:
-        logoutButton.setBorder(new LineBorder(new Color(230, 230, 230), 25, true));
+        logoutButton.setBackground(new Color(240,240,240));
     }//GEN-LAST:event_jLabel9MouseEntered
 
     private void jLabel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseExited
         // TODO add your handling code here:
-        logoutButton.setBorder(new LineBorder(new Color(255, 255, 255), 25, true));
+        logoutButton.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_jLabel9MouseExited
 
     private void RefreshButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefreshButtonMouseEntered

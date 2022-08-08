@@ -32,6 +32,7 @@ public class PostDetailView extends javax.swing.JFrame {
 
     public PostDetailView(String id) {
         initComponents();
+        this.setResizable(false);
 
         this.setPostId(id);
         controller = new PostController();
@@ -52,7 +53,6 @@ public class PostDetailView extends javax.swing.JFrame {
     private void LoadPost() {
 //        System.out.println(this.getPostId());
         Stack<String> post = controller.getDetail(this.getPostId());
-        System.out.println("post = " + post);
         cardPanel1.setName(post.get(0));
         cardPanel1.setTitle(post.get(1));
         cardPanel1.setDesc(post.get(2));
@@ -84,6 +84,7 @@ public class PostDetailView extends javax.swing.JFrame {
         commentPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1440, 1024));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -92,7 +93,6 @@ public class PostDetailView extends javax.swing.JFrame {
 
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TugasBesar/Kelompok4/Sosmed/Assets/back-button.png"))); // NOI18N
         backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        backButton.setPreferredSize(new java.awt.Dimension(32, 32));
         backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backButtonMouseClicked(evt);

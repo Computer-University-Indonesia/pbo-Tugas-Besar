@@ -149,6 +149,11 @@ public class LoginView extends javax.swing.JFrame {
         aboutUs.setText("About Us");
         aboutUs.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         aboutUs.setPreferredSize(new java.awt.Dimension(300, 30));
+        aboutUs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aboutUsMouseClicked(evt);
+            }
+        });
         mainPanel.add(aboutUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 620, -1, -1));
 
         backgroundPanel.add(mainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
@@ -186,6 +191,12 @@ public class LoginView extends javax.swing.JFrame {
         this.setVisible(false);
         new ForgetPasswordView().setVisible(true);
     }//GEN-LAST:event_forgetPasswordMouseClicked
+
+    private void aboutUsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutUsMouseClicked
+        // TODO add your handling code here:
+        new AboutUs().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_aboutUsMouseClicked
    
     /**
      * @param args the command line arguments

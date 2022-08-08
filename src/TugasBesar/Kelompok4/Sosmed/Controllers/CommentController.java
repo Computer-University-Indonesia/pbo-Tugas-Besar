@@ -32,7 +32,6 @@ public class CommentController {
     
     public Stack getDetail(String id ){
         Stack<Stack> result = model.getWithUserWhere(id);
-        System.out.println(result);
         return result;
     }
     

@@ -5,6 +5,7 @@
  */
 package TugasBesar.Kelompok4.Sosmed.Componenets;
 
+import TugasBesar.Kelompok4.Sosmed.Constants.Posts;
 import TugasBesar.Kelompok4.Sosmed.Controllers.PostController;
 import TugasBesar.Kelompok4.Sosmed.Views.PostDetailView;
 import java.awt.Color;
@@ -350,7 +351,7 @@ deleteButton.setVisible(true);
 
     private void detailTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailTextMouseClicked
         // TODO add your handling code here:
-        System.out.println(this.getId());
+        Posts.getView().dispose();
         PostDetailView detail = new PostDetailView(this.getId());
         detail.setVisible(true);
     }//GEN-LAST:event_detailTextMouseClicked
