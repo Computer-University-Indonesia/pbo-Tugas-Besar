@@ -33,13 +33,22 @@ public class Database {
     }
 //    create connection
 
-    public Connection getConnection() throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.jdbc.Driver");
-        String[] url = databaseProduction;
-    
-        Database.sqlConnection = DriverManager.getConnection(url[0],url[1],url[2]);
-        System.out.println("[Database] connected to Database sosmed");
-        return Database.sqlConnection;
+    public Connection getConnection() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String[] url = "production".equals(Database.env)?databaseProduction:databaseStaging;
+            System.out.println(Database.env);
+            System.out.println(url);
+            Database.sqlConnection = DriverManager.getConnection(url[0],url[1],url[2]);
+            System.out.println("[Database] connected to Database sosmed");
+            return Database.sqlConnection;
+        } catch (ClassNotFoundException ex) {
+
+        } catch (SQLException ex) {
+            System.out.println("[Database] SQL Exception : "+ex.getMessage());
+            return null;
+        }
+        return this.sqlConnection;
     }
 
     public void closeConnection() {
